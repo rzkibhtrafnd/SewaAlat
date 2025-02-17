@@ -47,32 +47,32 @@
             <a href=""
                 class="flex items-center space-x-4 px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors {{ request()->routeIs('admin.index') ? 'bg-blue-600' : '' }}">
                 <i class="fas fa-tachometer-alt text-2xl"></i>
-                <span class="text-xl">Dashboard</span>
+                <span class="">Dashboard</span>
             </a>
-            <a href=""
+            <a href="{{route('admin.user.index')}}"
                 class="flex items-center space-x-4 px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors {{ request()->routeIs('admin.user.index') ? 'bg-blue-600' : '' }}">
                 <i class="fas fa-users text-2xl"></i>
-                <span class="text-xl">User</span>
+                <span class="">User</span>
             </a>
-            <a href=""
-                class="flex items-center space-x-4 px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors {{ request()->routeIs('admin.gudang.index') ? 'bg-blue-600' : '' }}">
+            <a href="{{route('admin.produk.index')}}"
+                class="flex items-center space-x-4 px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors {{ request()->routeIs('admin.produk.index') ? 'bg-blue-600' : '' }}">
                 <i class="fas fa-warehouse text-2xl"></i>
-                <span class="text-xl">Gudang</span>
+                <span class="">Produk</span>
             </a>
-            <a href=""
+            <a href="{{route('admin.kategori.index')}}"
                 class="flex items-center space-x-4 px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors {{ request()->routeIs('admin.kategori.index') ? 'bg-blue-600' : '' }}">
                 <i class="fas fa-list text-2xl"></i>
-                <span class="text-xl">Kategori</span>
+                <span class="">Kategori</span>
             </a>
             <a href=""
-                class="flex items-center space-x-4 px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors {{ request()->routeIs('admin.produk.index') ? 'bg-blue-600' : '' }}">
+                class="flex items-center space-x-4 px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors {{ request()->routeIs('') ? 'bg-blue-600' : '' }}">
                 <i class="fas fa-boxes text-2xl"></i>
-                <span class="text-xl">Produk</span>
+                <span class="">Data Sewa</span>
             </a>
             <a href="{{ route('logout') }}"
                 class="flex items-center space-x-4 px-6 py-3 rounded-lg hover:bg-red-600 transition-colors">
                 <i class="fas fa-sign-out-alt text-2xl"></i>
-                <span class="text-xl">Logout</span>
+                <span class="">Logout</span>
             </a>
         </nav>
         <div class="absolute bottom-4 left-0 right-0 text-center text-gray-400 text-xs">

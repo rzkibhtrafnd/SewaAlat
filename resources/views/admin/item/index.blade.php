@@ -52,76 +52,9 @@
         <td class="px-6 py-4">
         $2999
         </td>
-        <td class="px-6 py-4">
-        $2999
-        </td>
-      </tr>
-      <tr class="odd:bg-white  even:bg-gray-50  border-b  border-gray-200">
-        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-        Microsoft Surface Pro
-        </th>
-        <td class="px-6 py-4">
-        White
-        </td>
-        <td class="px-6 py-4">
-        Laptop PC
-        </td>
-        <td class="px-6 py-4">
-        $1999
-        </td>
-        <td class="px-6 py-4">
-        <a href="#" class="font-medium text-blue-600 hover:underline">Edit</a>
-        </td>
-      </tr>
-      <tr class="odd:bg-white  even:bg-gray-50  border-b  border-gray-200">
-        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-        Magic Mouse 2
-        </th>
-        <td class="px-6 py-4">
-        Black
-        </td>
-        <td class="px-6 py-4">
-        Accessories
-        </td>
-        <td class="px-6 py-4">
-        $99
-        </td>
-        <td class="px-6 py-4">
-        <a href="#" class="font-medium text-blue-600 hover:underline">Edit</a>
-        </td>
-      </tr>
-      <tr class="odd:bg-white  even:bg-gray-50  border-b  border-gray-200">
-        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-        Google Pixel Phone
-        </th>
-        <td class="px-6 py-4">
-        Gray
-        </td>
-        <td class="px-6 py-4">
-        Phone
-        </td>
-        <td class="px-6 py-4">
-        $799
-        </td>
-        <td class="px-6 py-4">
-        <a href="#" class="font-medium text-blue-600 hover:underline">Edit</a>
-        </td>
-      </tr>
-      <tr>
-        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-        Apple Watch 5
-        </th>
-        <td class="px-6 py-4">
-        Red
-        </td>
-        <td class="px-6 py-4">
-        Wearables
-        </td>
-        <td class="px-6 py-4">
-        $999
-        </td>
-        <td class="px-6 py-4">
-        <a href="#" class="font-medium text-blue-600 hover:underline">Edit</a>
+        <td class="px-6 py-4 flex items-center gap-4">
+        <x-bladewind::button>Edit</x-bladewind::button>
+        <x-bladewind::button color="red">Hapus</x-bladewind::button>
         </td>
       </tr>
       </tbody>

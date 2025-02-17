@@ -2,7 +2,7 @@
 
 @section('content')
   <main>
-    <h1 class="text-2xl font-bold">Data Kategori</h1>
+    <h1 class="text-2xl font-bold">Data Pengguna</h1>
 
 
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-10">
@@ -10,10 +10,13 @@
       <thead class="text-xs text-gray-700 uppercase bg-gray-50">
       <tr>
         <th scope="col" class="px-6 py-3">
-        No
+        Nama
         </th>
         <th scope="col" class="px-6 py-3">
-        Nama
+        Email
+        </th>
+        <th scope="col" class="px-6 py-3">
+        Role
         </th>
         <th scope="col" class="px-6 py-3">
         Action
@@ -23,14 +26,17 @@
       <tbody>
       <tr class="odd:bg-white  even:bg-gray-50  border-b  border-gray-200">
         <td class="px-6 py-4">
-        1
+        Silver
         </td>
         <td class="px-6 py-4">
-        Tenda
+        Silver
+        </td>
+        <td class="px-6 py-4">
+        Laptop
         </td>
         <td class="px-6 py-4 flex items-center gap-4">
-        <x-bladewind::button>Edit</x-bladewind::button>
-        <x-bladewind::button color="red">Hapus</x-bladewind::button>
+        <x-bladewind::button>Lihat</x-bladewind::button>
+        <x-bladewind::button color="yellow">Edit</x-bladewind::button>
         </td>
       </tr>
       </tbody>

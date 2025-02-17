@@ -18,10 +18,23 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         return view('admin.dashboard');
     })->name('admin.dashboard');
 
+    Route::prefix('users')->group(function () {
+        Route::get('/', function () {
+            return view('admin.users.index');
+        })->name('admin.user.index');
+
+        // Route::get('add', function () {
+        //     return view('admin.item.add');
+        // });
+        // Route::get('/id/edit', function () {
+        //     return view('admin.item.edit');
+        // });
+    });
+
     Route::prefix('item')->group(function () {
         Route::get('/', function () {
             return view('admin.item.index');
-        });
+        })->name('admin.produk.index');
 
         Route::get('add', function () {
             return view('admin.item.add');
@@ -34,7 +47,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::prefix('kategori')->group(function () {
         Route::get('/', function () {
             return view('admin.kategori.index');
-        });
+        })->name('admin.kategori.index');
 
         Route::get('add', function () {
             return view('admin.kategori.add');
