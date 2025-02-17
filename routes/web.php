@@ -1,4 +1,5 @@
 <?php
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 
@@ -16,6 +17,32 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin', function () {
         return view('admin.dashboard');
     })->name('admin.dashboard');
+
+    Route::prefix('item')->group(function () {
+        Route::get('/', function () {
+            return view('admin.item.index');
+        });
+
+        Route::get('add', function () {
+            return view('admin.item.add');
+        });
+        Route::get('/id/edit', function () {
+            return view('admin.item.edit');
+        });
+    });
+
+    Route::prefix('kategori')->group(function () {
+        Route::get('/', function () {
+            return view('admin.item.index');
+        });
+
+        Route::get('add', function () {
+            return view('admin.item.add');
+        });
+        Route::get('/id/edit', function () {
+            return view('admin.item.edit');
+        });
+    });
 });
 
 Route::middleware(['auth', 'role:penyewa'])->group(function () {
