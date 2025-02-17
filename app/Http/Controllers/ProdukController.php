@@ -97,4 +97,11 @@ class ProdukController extends Controller
 
         return redirect()->route('admin.produk.index')->with('success', 'Produk berhasil dihapus.');
     }
+
+    public function userProduct()
+    {
+        $products = Produk::with('kategori')->orderBy('created_at', 'desc')->get();
+
+        return view('product', compact('products'));
+    }
 }

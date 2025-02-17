@@ -49,26 +49,31 @@
                 <i class="fas fa-tachometer-alt text-2xl"></i>
                 <span class="">Dashboard</span>
             </a>
-            <a href="{{ route('admin.kategori.index') }}"
-                class="flex items-center space-x-4 px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors {{ request()->routeIs('admin.kategori.index') ? 'bg-blue-600' : '' }}">
-                <i class="fas fa-list text-2xl"></i>
-                <span class="">Kategori</span>
-            </a>
-            <a href="{{ route('admin.produk.index') }}"
-                class="flex items-center space-x-4 px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors {{ request()->routeIs('admin.produk.index') ? 'bg-blue-600' : '' }}">
-                <i class="fas fa-boxes text-2xl"></i>
-                <span class="">Data Alat</span>
-            </a>
+            @if(auth()->user()->role == 'admin')
+                <a href="{{ route('admin.kategori.index') }}"
+                    class="flex items-center space-x-4 px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors {{ request()->routeIs('admin.kategori.index') ? 'bg-blue-600' : '' }}">
+                    <i class="fas fa-list text-2xl"></i>
+                    <span class="">Kategori</span>
+                </a>
+                <a href="{{ route('admin.produk.index') }}"
+                    class="flex items-center space-x-4 px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors {{ request()->routeIs('admin.produk.index') ? 'bg-blue-600' : '' }}">
+                    <i class="fas fa-boxes text-2xl"></i>
+                    <span class="">Data Alat</span>
+                </a>
+            @endif
             {{-- <a href="{{ route('admin.produk.index') }}"
                 class="flex items-center space-x-4 px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors {{ request()->routeIs('admin.produk.index') ? 'bg-blue-600' : '' }}">
                 <i class="fas fa-boxes text-2xl"></i>
                 <span class="">Data Sewa</span>
             </a> --}}
-            <a href="{{ route('logout') }}"
-                class="flex items-center space-x-4 px-6 py-3 rounded-lg hover:bg-red-600 transition-colors">
-                <i class="fas fa-sign-out-alt text-2xl"></i>
-                <span class="">Logout</span>
-            </a>
+            <form method="POST" action="{{ route('logout') }}" class="w-full">
+                @csrf
+                <button
+                    class="w-full flex items-center space-x-4 px-6 py-3 rounded-lg hover:bg-red-600 transition-colors">
+                    <i class="fas fa-sign-out-alt text-2xl"></i>
+                    <span class="">Logout</span>
+                </button>
+            </form>
         </nav>
         <div class="absolute bottom-4 left-0 right-0 text-center text-gray-400 text-xs">
             &copy; {{ date('Y') }} SewaAlat

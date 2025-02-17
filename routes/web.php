@@ -59,4 +59,6 @@ Route::middleware(['auth', 'role:penyewa'])->group(function () {
     Route::get('/penyewa', function () {
         return view('penyewa.dashboard');
     })->name('penyewa.dashboard');
+
+    Route::get('product', [ProdukController::class, 'userProduct'])->name('penyewa.product');
 });
