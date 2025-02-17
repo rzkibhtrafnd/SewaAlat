@@ -33,20 +33,21 @@ class ProdukController extends Controller
 
     public function store(Request $request)
     {
+
         $request->validate([
             'nama' => 'required|string|max:255',
-            'kategori_id' => 'required|exists:kategoris,id',
+            'kategori' => 'required|integer',
             'stok' => 'required|integer|min:0', // Validasi minimum 0 untuk stok
             'harga' => 'required|integer|min:0', // Validasi minimum 0 untuk harga
             'deskripsi' => 'required|string',
-            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5012',
         ]);
 
         $gambarPath = $request->file('gambar')->store('public/produk');
 
         Produk::create([
             'nama' => $request->nama,
-            'kategori_id' => $request->kategori_id,
+            'kategori_id' => $request->kategori,
             'stok' => $request->stok,
             'harga' => $request->harga,
             'deskripsi' => $request->deskripsi,

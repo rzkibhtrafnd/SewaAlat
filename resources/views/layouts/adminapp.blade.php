@@ -57,8 +57,13 @@
             <a href="{{ route('admin.produk.index') }}"
                 class="flex items-center space-x-4 px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors {{ request()->routeIs('admin.produk.index') ? 'bg-blue-600' : '' }}">
                 <i class="fas fa-boxes text-2xl"></i>
-                <span class="">Data Sewa</span>
+                <span class="">Data Alat</span>
             </a>
+            {{-- <a href="{{ route('admin.produk.index') }}"
+                class="flex items-center space-x-4 px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors {{ request()->routeIs('admin.produk.index') ? 'bg-blue-600' : '' }}">
+                <i class="fas fa-boxes text-2xl"></i>
+                <span class="">Data Sewa</span>
+            </a> --}}
             <a href="{{ route('logout') }}"
                 class="flex items-center space-x-4 px-6 py-3 rounded-lg hover:bg-red-600 transition-colors">
                 <i class="fas fa-sign-out-alt text-2xl"></i>
