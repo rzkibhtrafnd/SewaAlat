@@ -18,7 +18,7 @@
             font-family: 'Poppins', sans-serif;
         }
 
-        /* Tambahan styling untuk transisi */
+        /* Additional styling for transitions */
         .transition-transform {
             transition: transform 0.3s ease;
         }
@@ -44,22 +44,12 @@
             <p class="text-sm text-gray-300">{{ auth()->user()->name }}</p>
         </div>
         <nav class="space-y-4">
-            <a href=""
-                class="flex items-center space-x-4 px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors {{ request()->routeIs('admin.index') ? 'bg-blue-600' : '' }}">
+            <a href="{{ route('admin.dashboard') }}"
+                class="flex items-center space-x-4 px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors {{ request()->routeIs('admin.dashboard') ? 'bg-blue-600' : '' }}">
                 <i class="fas fa-tachometer-alt text-2xl"></i>
                 <span class="">Dashboard</span>
             </a>
-            <a href="{{route('admin.user.index')}}"
-                class="flex items-center space-x-4 px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors {{ request()->routeIs('admin.user.index') ? 'bg-blue-600' : '' }}">
-                <i class="fas fa-users text-2xl"></i>
-                <span class="">User</span>
-            </a>
-            <a href="{{route('admin.produk.index')}}"
-                class="flex items-center space-x-4 px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors {{ request()->routeIs('admin.produk.index') ? 'bg-blue-600' : '' }}">
-                <i class="fas fa-warehouse text-2xl"></i>
-                <span class="">Produk</span>
-            </a>
-            <a href="{{route('admin.kategori.index')}}"
+            <a href="{{ route('admin.kategori.index') }}"
                 class="flex items-center space-x-4 px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors {{ request()->routeIs('admin.kategori.index') ? 'bg-blue-600' : '' }}">
                 <i class="fas fa-list text-2xl"></i>
                 <span class="">Kategori</span>
