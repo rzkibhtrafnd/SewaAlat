@@ -10,8 +10,7 @@
     <x-bladewind::input name="stock" label="Stok Tersedia" required="true" numeric="true" />
     <x-bladewind::input name="price" label="Harga" required="true" numeric="true" />
     <x-bladewind::textarea name="description" required="true" label="Deskripsi" />
-    <x-bladewind::button can_submit="true" class="w-full mx-auto block font-semibold">click me to
-      submit</x-bladewind::button>
+    <x-bladewind::button can_submit="true" class="w-full mx-auto block font-semibold">Simpan</x-bladewind::button>
     </form>
   </main>
 @endsection

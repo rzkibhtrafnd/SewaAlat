@@ -33,14 +33,14 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
     Route::prefix('kategori')->group(function () {
         Route::get('/', function () {
-            return view('admin.item.index');
+            return view('admin.kategori.index');
         });
 
         Route::get('add', function () {
-            return view('admin.item.add');
+            return view('admin.kategori.add');
         });
         Route::get('/id/edit', function () {
-            return view('admin.item.edit');
+            return view('admin.kategori.edit');
         });
     });
 });
