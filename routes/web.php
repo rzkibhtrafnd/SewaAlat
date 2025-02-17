@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\ProdukController;
 
 // Authentication Routes
 Route::get('/', function () {
@@ -32,6 +33,16 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         'destroy' => 'admin.kategori.destroy',
     ]);
 
+    Route::resource('produk', ProdukController::class)->names([
+        'index' => 'admin.produk.index',
+        'create' => 'admin.produk.create',
+        'store' => 'admin.produk.store',
+        'show' => 'admin.produk.show',
+        'edit' => 'admin.produk.edit',
+        'update' => 'admin.produk.update',
+        'destroy' => 'admin.produk.destroy',
+    ]);
+
     Route::prefix('item')->group(function () {
         Route::get('/', function () {
             return view('admin.item.index');
@@ -40,24 +51,6 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::get('add', function () {
             return view('admin.item.add');
         })->name('admin.item.add');
-
-<<<<<<< HEAD
-        Route::get('{id}/edit', function ($id) {
-            return view('admin.item.edit', compact('id'));
-        })->name('admin.item.edit');
-=======
-    Route::prefix('kategori')->group(function () {
-        Route::get('/', function () {
-            return view('admin.kategori.index');
-        });
-
-        Route::get('add', function () {
-            return view('admin.kategori.add');
-        });
-        Route::get('/id/edit', function () {
-            return view('admin.kategori.edit');
-        });
->>>>>>> origin/master
     });
 });
 

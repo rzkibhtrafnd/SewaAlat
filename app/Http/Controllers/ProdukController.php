@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Kategori;
 use App\Models\Produk;
+use Illuminate\Support\Facades\Storage;
 
 class ProdukController extends Controller
 {
     public function index(Request $request)
     {
-        $produks = Produk::with(['kategori'])
+        $produks = Produk::with('kategori')
             ->when($request->search, function ($query) use ($request) {
                 return $query->where('nama', 'like', '%' . $request->search . '%');
             })
@@ -34,26 +35,25 @@ class ProdukController extends Controller
     {
         $request->validate([
             'nama' => 'required|string|max:255',
-            'kategori_id' => 'required|exists:kategori,id',
-            'stok' => 'required|integer',
-            'harga' => 'required|integer',
+            'kategori_id' => 'required|exists:kategoris,id',
+            'stok' => 'required|integer|min:0', // Validasi minimum 0 untuk stok
+            'harga' => 'required|integer|min:0', // Validasi minimum 0 untuk harga
             'deskripsi' => 'required|string',
             'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        $gambar = $request->file('gambar');
-        $gambar->storeAs('public/produk', $gambar->hashName());
+        $gambarPath = $request->file('gambar')->store('public/produk');
 
-        $produk = Produk::create([
+        Produk::create([
             'nama' => $request->nama,
             'kategori_id' => $request->kategori_id,
             'stok' => $request->stok,
             'harga' => $request->harga,
             'deskripsi' => $request->deskripsi,
-            'gambar' => $gambar->hashName(),
+            'gambar' => basename($gambarPath), // Hanya menyimpan nama file
         ]);
 
-        return redirect()->route('produk.index');
+        return redirect()->route('admin.produk.index')->with('success', 'Produk berhasil ditambahkan.');
     }
 
     public function edit(Produk $produk)
@@ -66,35 +66,34 @@ class ProdukController extends Controller
     {
         $request->validate([
             'nama' => 'required|string|max:255',
-            'kategori_id' => 'required|exists:kategori,id',
-            'stok' => 'required|integer',
-            'harga' => 'required|integer',
+            'kategori_id' => 'required|exists:kategoris,id',
+            'stok' => 'required|integer|min:0',
+            'harga' => 'required|integer|min:0',
             'deskripsi' => 'required|string',
-            'gambar' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
+
+        $data = $request->only(['nama', 'kategori_id', 'stok', 'harga', 'deskripsi']);
 
         if ($request->hasFile('gambar')) {
-            $gambar = $request->file('gambar');
-            $gambar->storeAs('public/produk', $gambar->hashName());
-        } else {
-            $gambar = $produk->gambar;
+            // Hapus gambar lama dari storage jika ada
+            Storage::delete('public/produk/' . $produk->gambar);
+
+            $gambarPath = $request->file('gambar')->store('public/produk');
+            $data['gambar'] = basename($gambarPath);
         }
 
-        $produk->update([
-            'nama' => $request->nama,
-            'kategori_id' => $request->kategori_id,
-            'stok' => $request->stok,
-            'harga' => $request->harga,
-            'deskripsi' => $request->deskripsi,
-            'gambar' => $gambar,
-        ]);
+        $produk->update($data);
 
-        return redirect()->route('produk.index');
+        return redirect()->route('admin.produk.index')->with('success', 'Produk berhasil diperbarui.');
     }
 
     public function destroy(Produk $produk)
     {
+        // Hapus gambar dari storage sebelum menghapus produk
+        Storage::delete('public/produk/' . $produk->gambar);
         $produk->delete();
-        return redirect()->route('produk.index');
+
+        return redirect()->route('admin.produk.index')->with('success', 'Produk berhasil dihapus.');
     }
 }
