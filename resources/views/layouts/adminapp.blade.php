@@ -26,7 +26,7 @@
     <script src="{{ asset('vendor/bladewind/js/helpers.js') }}"></script>
 </head>
 
-<body class="bg-gray-100">
+<body class="bg-white">
     <!-- Navbar -->
     <nav class="bg-gradient-to-r from-gray-800 to-gray-900 p-4 md:hidden flex justify-between items-center shadow-md">
         <button class="text-white focus:outline-none" onclick="toggleSidebar()">
@@ -71,7 +71,7 @@
     </div>
 
     <!-- Main Content -->
-    <div id="main-content" class="md:ml-72 p-6 bg-white">
+    <div id="main-content" class="md:ml-72 p-6">
         @yield('content')
     </div>
 

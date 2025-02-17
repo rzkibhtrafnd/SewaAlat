@@ -41,9 +41,23 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
             return view('admin.item.add');
         })->name('admin.item.add');
 
+<<<<<<< HEAD
         Route::get('{id}/edit', function ($id) {
             return view('admin.item.edit', compact('id'));
         })->name('admin.item.edit');
+=======
+    Route::prefix('kategori')->group(function () {
+        Route::get('/', function () {
+            return view('admin.kategori.index');
+        });
+
+        Route::get('add', function () {
+            return view('admin.kategori.add');
+        });
+        Route::get('/id/edit', function () {
+            return view('admin.kategori.edit');
+        });
+>>>>>>> origin/master
     });
 });
 

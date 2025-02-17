@@ -1,6 +1,7 @@
 @extends('layouts.adminapp')
 
 @section('content')
+<<<<<<< HEAD
 <main>
     <h1 class="text-2xl font-bold">Edit Kategori</h1>
     <form action="{{ route('admin.kategori.update', $kategori->id) }}" method="POST" class="w-full max-w-xl mt-5 flex flex-col gap-5">
