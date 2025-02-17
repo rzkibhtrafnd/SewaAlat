@@ -21,7 +21,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         return view('admin.dashboard');
     })->name('admin.dashboard');
 
-    // Define the resource route for kategori with names
+    // Resource route for kategori with named routes
     Route::resource('kategori', KategoriController::class)->names([
         'index' => 'admin.kategori.index',
         'create' => 'admin.kategori.create',
@@ -32,6 +32,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         'destroy' => 'admin.kategori.destroy',
     ]);
 
+    // Item Routes
     Route::prefix('item')->group(function () {
         Route::get('/', function () {
             return view('admin.item.index');
@@ -40,21 +41,18 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::get('add', function () {
             return view('admin.item.add');
         })->name('admin.item.add');
+    });
 
+    // Kategori Routes (for additional views, not for resource controller)
     Route::prefix('kategori')->group(function () {
-        Route::get('/', function () {
-            return view('admin.kategori.index');
-        })->name('admin.kategori.index');
-
         Route::get('add', function () {
             return view('admin.kategori.add');
-        });
-        Route::get('/id/edit', function () {
-            return view('admin.kategori.edit');
-        });
+        })->name('admin.kategori.add');
 
+        Route::get('{id}/edit', function () {
+            return view('admin.kategori.edit');
+        })->name('admin.kategori.edit');
     });
-    
 });
 
 // Penyewa Routes

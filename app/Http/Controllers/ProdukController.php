@@ -44,7 +44,7 @@ class ProdukController extends Controller
         $gambar = $request->file('gambar');
         $gambar->storeAs('public/produk', $gambar->hashName());
 
-        $produk = Produk::create([
+        Produk::create([
             'nama' => $request->nama,
             'kategori_id' => $request->kategori_id,
             'stok' => $request->stok,

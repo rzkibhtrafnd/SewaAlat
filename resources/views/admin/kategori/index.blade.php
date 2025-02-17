@@ -1,7 +1,7 @@
 @extends('layouts.adminapp')
 
 @section('content')
-  <<<<<<< HEAD <main>
+  <main>
     <h1 class="text-2xl font-bold">Data Kategori</h1>
 
     <!-- Button to add new kategori -->
@@ -39,5 +39,5 @@
       </tbody>
     </table>
     </div>
-    </main>
-  @endsection
+  </main>
+@endsection
